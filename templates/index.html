@@ -67,7 +67,6 @@
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                               <ul class="nav navbar-nav navbar-right" id="top-nav">
                                 <li><a href="#hero-area">Home</a></li>
-                                <li><a href="#about-us">about us</a></li>
                                 <li><a href="#blog">Blog</a></li>
                                 <li><a href="#price">menu</a></li>
                                 <li><a href="#subscribe">news</a></li>
@@ -92,19 +91,13 @@
                         <div class="title">
                             <h3>Featured <span>Works</span></h3>
                         </div>
-                        <div id="owl-example" class="owl-carousel">
-                            <div>
-                                <img class="img-responsive" src="{% static 'images/slider/slider-img-1.jpg' %}" alt="">
+                        <div style="display: flex; gap: 30px;">
+                            {% for featured in featured_works %}
+                            <div style="margin-right: 2rem; margin-left: 2rem; margin-top: 5rem;">
+                                <img src="{{featured.img.url}}" alt="" width="250px" height="250px">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione itaque saepe distinctio doloremque corporis quis neque possimus, voluptas quisquam cum persp </p>
                             </div>
-                            <div>
-                                <img class="img-responsive" src="{% static 'images/slider/slider-img-2.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img class="img-responsive" src="{% static 'images/slider/slider-img-3.jpg' %}" alt="">
-                            </div>
-                            <div>
-                                <img class="img-responsive" src="{% static 'images/slider/slider-img-4.jpg' %}" alt="">
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div><!-- .col-md-12 close -->
@@ -122,60 +115,17 @@
                     <div class="block">
                         <h1 class="heading">Latest <span>From</span> the <span>Blog</span></h1>
                         <ul>
+                            {% for blog in latest_blog %}
                             <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="300ms">
                                 <div class="blog-img">
-                                    <img src="{% static 'images/blog/blog-img-1.jpg' %}" alt="blog-img">
+                                    <img src="{{blog.img.url}}" alt="blog-img"  width="300px"  height="300px">
                                 </div>
                                 <div class="content-right">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
+                                    <h3>{{blog.title}}</h3>
+                                    <p>{{blog.body}}</p>
                                 </div>
                             </li>
-                            <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="400ms">
-                                <div class="blog-img">
-                                    <img src="{% static 'images/blog/blog-img-2.jpg' %}" alt="blog-img">
-                                </div>
-                                <div class="content-right">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                            </li>
-                            <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="500ms">
-                                <div class="content-left">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                                <div class="blog-img-2">
-                                    <img src="{% static 'images/blog/blog-img-3.jpg' %}" alt="blog-img">
-                                </div>
-                            </li>
-                            <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="600ms">
-                                <div class="content-left">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                                <div class="blog-img-2">
-                                    <img src="{% static 'images/blog/blog-img-4.jpg' %}" alt="blog-img">
-                                </div>
-                            </li>
-                            <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="700ms">
-                                <div class="blog-img">
-                                    <img src="{% static 'images/blog/blog-img-5.jpg' %}" alt="blog-img">
-                                </div>
-                                <div class="content-right">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                            </li>
-                            <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="800ms">
-                                <div class="blog-img">
-                                    <img src="{% static 'images/blog/blog-img-6.jpg' %}" alt="blog-img">
-                                </div>
-                                <div class="content-right">
-                                    <h3>Homestyle Chicken Pot Pie</h3>
-                                    <p>Prepared in true New England fash-ion. Tender all-white meat chicken simmered...</p>
-                                </div>
-                            </li>
+                            {% endfor %}
                         </ul>
                         <a class="btn btn-default btn-more-info wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="#" role="button">More Info</a>
                     </div>
@@ -191,73 +141,23 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="block">
-                        <h1 class="heading wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">our <span>MENU</span> the <span>PRICE</span></h1>
-                        <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
                         <div class="pricing-list">
                             <div class="title">
                                 <h3>Featured <span>on the week</span></h3>
                             </div>
                             <ul>
+                                {% for menu_price in menu_prices %}
                                 <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
                                     <div class="item">
                                         <div class="item-title">
-                                            <h2>Pancakes n' Such</h2>
+                                            <h2>{{menu_price.title}}</h2>
                                             <div class="border-bottom"></div>
-                                            <span>$ 25.00</span>
+                                            <span>${{menu_price.price}}</span>
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim&&</p>
+                                        <p>{{menu_price.body}}</p>
                                     </div>
                                 </li>
-                                <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">
-                                    <div class="item">
-                                        <div class="item-title">
-                                            <h2>Homestyle Chicken Pot Pie</h2>
-                                            <div class="border-bottom"></div>
-                                            <span>$ 10.00</span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim&&</p>
-                                    </div>
-                                </li>
-                                <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="500ms">
-                                    <div class="item">
-                                        <div class="item-title">
-                                            <h2>Cereal, Panecillos y Frutas </h2>
-                                            <div class="border-bottom"></div>
-                                            <span>$ 5.00</span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim&&</p>
-                                    </div>
-                                </li>
-                                <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="600ms">
-                                    <div class="item">
-                                        <div class="item-title">
-                                            <h2>Meat of Skewers</h2>
-                                            <div class="border-bottom"></div>
-                                            <span>$ 15.00</span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim&&</p>
-                                    </div>
-                               </li>
-                                <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="700ms">
-                                    <div class="item">
-                                        <div class="item-title">
-                                            <h2>Steak with a Garlic and Parsley Risotto</h2>
-                                            <div class="border-bottom"></div>
-                                            <span>$ 75.00</span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim&&</p>
-                                    </div>
-                                </li>
-                                <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="800ms">
-                                    <div class="item">
-                                        <div class="item-title">
-                                            <h2>Caesar Salad</h2>
-                                            <div class="border-bottom"></div>
-                                            <span>$ 7.00</span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim&&</p>
-                                    </div>
-                                </li>
+                                {% endfor %}
                             </ul>
                             <a class="btn btn-default pull-right wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="#" role="button">More Info</a>
                         </div>
@@ -331,16 +231,16 @@
                             <ul>
                                 <li>
                                   <h4><i class="fa fa-phone"></i>Telefone</h4>
-                                  <p>(000) 123 456 78- (000) 123 4567 89</p>
+                                  <p>{{address.telephone}}</p>
                                     
                                 </li>
                                 <li>
                                   <h4><i class="fa fa-map-marker"></i>Address</h4>
-                                  <p>2046 Blue Spruce Lane Laurel Canada</p>
+                                  <p>{{address.address}}</p>
                                 </li>
                                 <li>
                                   <h4><i class="fa fa-envelope"></i>E mail</h4>
-                                  <p>rest@gmail.com - rest@mail.ru</p>
+                                  <p>{{address.email}}</p>
                                   
                                 </li>
                             </ul>
@@ -353,14 +253,13 @@
                         <h3>LATEST <span>BLOG POSTS</span></h3>
                         <div class="blog">
                             <ul>
+                                {% for blog in latest_blog %}
                                 <li>
-                                    <h4><a href="#">Nov 9-2014</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adip iscing elit. Curabitur ut blandit sapien</p>
+                                    <h4><a href="#">{{blog.date}}</a></h4>
+                                    <p>{{blog.title}}</p>
+                                    <p>{{blog.body}}</p>
                                 </li>
-                                <li>
-                                    <h4><a href="#">Sep 8-2014</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adip iscing elit. Curabitur ut blandit sapien</p>
-                                </li>
+                                {% endfor %}
                             </ul>                
                         </div>
                     </div>
@@ -371,18 +270,11 @@
                         <div class="gallary">
                             <h3>PHOTO <span>STREAM</span></h3>
                             <ul>
+                                {% for work in featured_works %}
                                 <li>
-                                    <a href="#"><img src="{% static 'images/photo/photo-1.jpg' %}" alt=""></a>
+                                    <a href="#"><img src="{{work.img.url}}" alt="" height="60px" width="60px"></a>
                                 </li>
-                                <li>
-                                    <a href="#"><img src="{% static 'images/photo/photo-2.jpg' %}" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="{% static 'images/photo/photo-3.jpg' %}" alt=""></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="{% static 'images/photo/photo-4.jpg' %}" alt=""></a>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <div class="social-media-link">
