@@ -12,5 +12,18 @@ def main(request):
         'menu_prices' : menu_prices,
         'address' : address
     }
-    return render(request, 'index.html', context)
 
+    if request.method == "POST":
+        print(1)
+        fullname = request.POST['fullname']
+        print(request.POST['fullname'])
+        email = request.POST['email']
+        message = request.POST['message']
+
+        models.SignUp.objects.create(
+            fullname = fullname,
+            email = email,
+            message = message
+        )
+
+    return render(request, 'index.html', context)

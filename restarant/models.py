@@ -34,3 +34,11 @@ class Contact_info(models.Model):
     
     def __str__(self):
         return self.email
+    
+class SignUp(models.Model):
+    fullname = models.CharField(max_length=255)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self) -> str:
+        return self.fullname
